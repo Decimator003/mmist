@@ -1,7 +1,10 @@
 # MMIST
-Official Pytorch implementation of the WACV 2024 paper Multimodality-guided Image Style Transfer using Cross-modal GAN Inversion.
+Text Based Image Style Transfer using Cross-modal GAN Inversion.
 
-[[Paper](https://arxiv.org/abs/2312.01671)] [[Project Page](https://hywang66.github.io/mmist/)] 
+Base paper - [[Paper](https://arxiv.org/abs/2312.01671)] [[Project Page](https://hywang66.github.io/mmist/)] 
+
+The report for changes made by us in the proeject is
+[[Contextual_Loss_Updates](./docs/BTP_report_final.pdf)]
 
 ![Teaser image](./teaser.jpg)
 
@@ -50,28 +53,14 @@ The results will be saved in `./outputs/exp_mmist/stylized_imgs`.
 
 In the `example.sh` script, we first set the used method repo paths and the pre-trained model path. Then, we set the input content images paths and the input style paths. Finally, we stylize the content images in 2 steps:
 
-1. First, we generate style representations based on style text and/or style image inputs using `gen_style_reps.py`.
+1. First, we generate style representations based on style text inputs using `gen_style_reps.py`.
 2.  Next, we stylize the content images using `apply_style_reps.py`.
 
 Note that these two steps can be executed separately, i.e., you can stylize the different content images multiple times using the same pre-generated style representations by running `apply_style_reps.py` multiple times.
 
 ### Arguments Requirements
 
-In `gen_style_reps.py`, you can pass arbitrary number of style text and style image inputs. However, you need to ensure that the number of style inputs is the same as the number of style weights. In other words, you need to ensure that the number of argument passed to `--sty_text` is the same as the number of argument passed to `--alpha_text`; and the number of argument passed to `--sty_img` is the same as the number of argument passed to `--alpha_img`.
+In `gen_style_reps.py`, you can pass arbitrary number of style text inputs. However, you need to ensure that the number of style inputs is the same as the number of style weights. In other words, you need to ensure that the number of argument passed to `--sty_text` is the same as the number of argument passed to `--alpha_text`; and the number of argument passed to `--sty_img` is the same as the number of argument passed to `--alpha_img`.
 
-### More Examples
 
-As a general style transfer method, MMIST can also be used to transfer the style expressed in a single modality. This can be achieved by passing only one style input (either style text or style image) to `gen_style_reps.py`. Please see the detailed example in `example_TIST.sh`
 
-## Citation
-If you find our work useful in your research, please cite:
-
-```bibtex
-@inproceedings{wang2024multimodality,
-  title={Multimodality-guided Image Style Transfer using Cross-modal GAN Inversion},
-  author={Wang, Hanyu and Wu, Pengxiang and Dela Rosa, Kevin and Wang, Chen and Shrivastava, Abhinav},
-  booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision},
-  pages={4976--4985},
-  year={2024}
-}
-```

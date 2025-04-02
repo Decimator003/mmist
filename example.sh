@@ -13,7 +13,7 @@ content_paths="./contents" # or use a folder / multiple folders of content image
 
 # set up the multimodal style inputs
 sty_text="fire" # the style text description
-sty_img="./styles/mondrian.jpg" # the source style image
+sty_img="" # the source style image
 
 
 # Fisrt, generate the style representations
@@ -33,5 +33,6 @@ python apply_style_reps.py \
     --style_reps_dir outputs/$exp_name/style_reps \
     --output_dir outputs/$exp_name/stylized_imgs \
     --content_paths $content_paths \
-    --adaattn_path $adaattn_path 
-
+    --adaattn_path $adaattn_path \
+    --use_contextual \
+    --cx_weight 0.4
